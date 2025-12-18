@@ -1,0 +1,15 @@
+.idea
+.vscode
+__pycache__
+sub.csv
+*.aux
+*.bbl
+*.log
+*.out
+*.synctex.gz
+*.blg
+.DS_Store
+.~lock*
+venv
+tb_logs
+lightning_logs
