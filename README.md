@@ -1,61 +1,109 @@
-# CS529-Neural Network 
+🎶 Music Genre Classification with Deep Learning & Transfer Learning
+===================================================================
+From spectrograms → CNNs → ResNet-50 → scalable deep learning
+
+🚀 Overview
+----------------
+This project explores deep learning approaches for music genre classification, progressing from MLPs to CNNs, and finally transfer learning using ResNet-50.
+
+The focus is on representation learning, scalability, and performance comparison across architectures.
+
+🎯 Objective
+-------------
+Predict the genre of a music track by learning patterns directly from spectrogram representations using deep neural networks.
+
+🔄 End-to-End Pipeline
+Audio Files
+   ↓
+Feature Extraction
+   ↓
+Spectrogram Generation
+   ↓
+MLP / CNN Training
+   ↓
+Transfer Learning (ResNet-50)
+   ↓
+Evaluation & Comparison
+
+### 1\. Feature Extraction
+
+Audio files were converted into structured numerical representations using:
+
+-   MFCCs (Mel-Frequency Cepstral Coefficients)
+-   Chroma features
+-   Spectral Centroid
+-   Spectral Bandwidth
+-   Zero-Crossing Rate
+-   Tempo-related features
+
+These features capture both frequency and temporal characteristics of music.
+
+### 2\.  Spectrogram Generation
+
+-   Converted audio signals into time–frequency spectrograms
+-   Treated spectrograms as images
+-   Enabled CNNs to learn:
+-   Frequency textures
+-   Temporal rhythm patterns
+-   Harmonic structures
+
+### 3\. Model Architectures
+🔹 Multi-Layer Perceptron (MLP)
+
+-   Trained on structured spectrogram features 
+-   Hyperparameter-controlled:
+    -   Number of layers
+    -   Layer size 
+
+🔹 Convolutional Neural Network (CNN)
+
+-   Trained directly on spectrogram images
+-   Learned spatial time–frequency patterns
+-   Outperformed MLPs due to automatic feature learning
+
+🔹 Transfer Learning — ResNet-50
+
+-   Pretrained on ImageNet
+-   Replaced final classification layer
+-   Selective layer unfreezing via hyperparameters
+-   Compared:
+|   -   Fully frozen backbone
+|   -   Partially fine-tuned models
+Demonstrated effective cross-domain knowledge transfer.
+
+### \. Evaluation Metrics
+
+-   Accuracy
+-   Precision / Recall / F1-score
+-   Confusion Matrix
+-   Training & validation loss curves
+
+🔍 Key Insights
+--------------------
+-   CNNs outperform MLPs on spectrogram data
+-   Transfer learning improves convergence and generalization
+-   Partial unfreezing balances performance and overfitting
+-   Pretrained vision models transfer well to audio tasks
+
+🛠️ Tech Stack
+--------------
+-   Python
+-   NumPy
+-   Scikit-learn
+-   PyTorch
+-   PyTorch Lightning
+-   Torchvision
+-   Librosa
+-   Matplotlib / Seaborn
+
+📁 Repository Structure 
 ### Repo Structure
 The repository is organized into 5 main folders:
-* checkpoints - Contains current best model from NN and Transfer learning.
-* data - Contains all the datasets and submission data.
-* models - Contains the current best model, and is where trained models are stored using pickle.
-* report - Contains the tex files for the report.
-* src - Contains source files for the project, also contains config.py.
-
-## File Manifest
-
-### ./models
-* best_model_epoch=x_val_loss=y.ckpt - The current best model, saved using pytorch checkpoints.
-
-### ./data
-This folder may be empty as the dataset must be removed when submitting.
-* music folder - Contains test and train folders containing audio music files respectively 
-* spreadsheets folder - Contains following 
-    * test.csv - The test dataset containing all extracted features.
-    * train.csv - The train dataset containing all extracted features.
-    * sub.csv - The file storing the submission to kaggle.
-* spectrograms folder - Contains following 
-    * test - Contains spectrograms for test dataset.
-    * train - Contains spectrograms for train dataset.
-* list_test.csv - ids for test dataset.
-* potential_outliers.txt - Analyzed data of outliers.
-
-### ./models
-* selected.pkl - The current best model, saved using pickle trained on MLP model.
-
-### ./report
-* images - images for report
-* report.pdf - The compiled report.
-* report.tex - The uncompiled tex file of the report.
-* /report_archive - Old report format that we planned on using before swapping over to a simpler one due to it not being part of the rubric.
-
-### ./src
-* data_modules 
-    * __init__.py 
-    * music_data_module.py - Contains code for spectrograms transformations, train-validation split and dataloader formation
-* models 
-    * __init__.py 
-    * cnn.py - Convolutional Neural Network training code 
-    * multilayer_perceptron.py - Training and evaluation code for multi-layer perceptron model using pytorch
-    * transfer_learning.py - Utilized pretrained mode - ResNet50 for transfer learning 
-* config.py - Contains all configurable hyperparameters.
-* create_spectrogram.py - Generating soectrogram image for music files
-* data_analysis.py - Generating heat maps, and t_SNE clustering maps for data visualization
-* evaluate.py - Uses the model generated using MPLs stored at the given path in config.py, evaluates all the test data and stores the output in the path given by config.py
-* extract.py - extract various features from the audio files.
-* image_evaluate.py - Model evaluation on test dataset for models trained using spectrograms i.e. NN and transfer learning 
-* image_train.py - Training for models trained using spectrograms i.e. NN and transfer learning 
-* main.py - Simply calls the functions from evaluate.py and train.py, while passing configuration information from config.py
-* train.py - Trains a models (MLPs) using configuration information from config.py, saves the model at the path given by config.py
-* utils.py - Contains some utility functions such as load spreadsheets, get feature matrix, get class matrix etc.
-* visualization.py - Visualizing the misclassified samples.
-* visualize.py - Simply calls the functions from visualization.py.
-
+-    checkpoints - Contains current best model from NN and Transfer learning.
+-    data - Contains all the datasets and submission data.
+-    models - Contains the current best model, and is where trained models are stored using pickle.
+-    report - Contains the tex files for the report.
+-    src - Contains source files for the project, also contains config.py.
 
 ## Running Code
 There exist 3 different options for running this program, which are all detailed below.
