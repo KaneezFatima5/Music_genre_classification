@@ -142,5 +142,5 @@ To evaluate model on neural netwrok or using transfer learning, simply run image
 
 ## Kaggle Score, Accuracy, and Date Run
 * Kaggle Score - 0.74
-* Average accuracy on validation set - 0.68
+* Average accuracy on validation set - 0.97
 * Date run - December 9th, 2025
